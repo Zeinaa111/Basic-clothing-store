@@ -34,15 +34,15 @@ form.addEventListener('submit', async (e) => {
             body: JSON.stringify(productData),
         });
 
-        // Handle the response
+        
         if (response.ok) {
             const result = await response.json();
             console.log('Product added:', result);
 
-            // Optionally reset the form after submission
+            
             form.reset();
 
-            // Optionally, display a success message
+            
             alert('Product added successfully!');
         } else {
             const errorResult = await response.json();
