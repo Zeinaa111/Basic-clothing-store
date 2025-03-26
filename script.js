@@ -7,13 +7,11 @@ form.addEventListener('submit', async (e) => {
     const price = document.getElementById('price').value;
     const description = document.getElementById('description').value;
 
-    // Basic validation for empty fields
     if (!name || !price || !description) {
         alert('All fields are required!');
         return;
     }
 
-    // Validate price to ensure it is a positive number
     if (isNaN(price) || price <= 0) {
         alert('Price must be a positive number.');
         return;
