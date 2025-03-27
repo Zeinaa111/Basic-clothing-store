@@ -8,7 +8,6 @@ Live Features
 - Responsive landing page with a hero section and call-to-action
 - Product catalog dynamically rendered with JavaScript
 - Live search functionality
-- Add new product form (admin use)
 - Integrated PayPal sandbox checkout
 - Mobile responsive UI
 
