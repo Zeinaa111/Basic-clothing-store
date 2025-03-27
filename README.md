@@ -16,7 +16,6 @@ Tech Stack
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas with Mongoose
 - **Payment:** PayPal Sandbox Integration
-- **Deployment Ready:** Dockerfile 
 
   Project Structure
 ```
