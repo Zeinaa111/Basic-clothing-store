@@ -1,4 +1,4 @@
-# BASICS - Minimalist Fashion E-commerce Website
+# BASICS - Fashion E-commerce Website
 
 Overview
 
