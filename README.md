@@ -1,6 +1,7 @@
 # BASICS - Minimalist Fashion E-commerce Website
 
 Overview
+
 **BASICS** is a minimalist online clothing store designed for women who love timeless wardrobe staples. The platform offers an affordable, modern, and seamless shopping experience for essential fashion basics such as tops, tanks, and sweatshirts.
 
 Live Features
