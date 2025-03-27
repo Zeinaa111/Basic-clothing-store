@@ -31,6 +31,7 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            cursor: pointer;
         }
         .hero {
             display: flex;
@@ -39,7 +40,7 @@
             height: 90vh;
             background: url('https://source.unsplash.com/1600x900/?fashion,clothing') no-repeat center center/cover;
             text-align: center;
-            color: black; /* Changed from white to black */
+            color: black;
         }
         .hero h1 {
             font-size: 50px;
@@ -61,7 +62,7 @@
         .btn:hover {
             background: #f1f1f1;
         }
-        .about, .products {
+        .about, .products, .contact {
             padding: 50px;
             text-align: center;
             background: white;
@@ -151,6 +152,21 @@
             text-align: center;
             padding: 20px;
         }
+        .about-content, .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .instagram-link {
+            color: #E1306C;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .instagram-link:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
             .product-list {
                 grid-template-columns: 1fr;
@@ -169,10 +185,9 @@
     <header>
         <div class="logo">BASICS</div>
         <nav>
-            <a href="#about">About</a>
-            <a href="#shop">Shop</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
+            <a id="about-link">About</a>
+            <a id="products-link">Products</a>
+            <a id="contact-link">Contact</a>
         </nav>
     </header>
     
@@ -180,22 +195,35 @@
         <div>
             <h1>Timeless Basics for Everyday Wear</h1>
             <p>Minimalist. Comfortable. Stylish.</p>
-            <a href="#products" class="btn">Shop Now</a>
+            <a href="#products" class="btn" id="hero-shop-btn">Shop Now</a>
         </div>
     </section>
     
-    <section class="about" id="about">
+    <section class="about" id="about" style="display: none;">
         <h2>About BASICS</h2>
-        <p>BASICS is a Berlin-based local brand offering high-quality basic tops. Designed for those who appreciate minimalism and comfort.</p>
+        <div class="about-content">
+            <p>BASICS is a Berlin-based local brand offering high-quality basic tops at affordable prices.</p>
+            <p>We specialize in minimalist, comfortable, and stylish essentials designed for everyday wear.</p>
+            <p>Our mission is to provide wardrobe staples that are both accessible and sustainable.</p>
+        </div>
     </section>
     
-    <div class="search-bar">
+    <div class="search-bar" id="search-bar" style="display: none;">
         <input type="text" id="search-input" placeholder="Search for a product..." onkeyup="searchProducts()">
     </div>
     
-    <section class="products" id="products">
+    <section class="products" id="products" style="display: none;">
         <h2>Our Products</h2>
         <div class="product-list" id="product-list"></div>
+    </section>
+    
+    <section class="contact" id="contact" style="display: none;">
+        <h2>Contact Us</h2>
+        <div class="contact-content">
+            <p>Reach out to us on Instagram:</p>
+            <p><a href="https://instagram.com/basics" class="instagram-link" target="_blank">@basics</a></p>
+            <p>We're happy to answer any questions about our products!</p>
+        </div>
     </section>
     
     <footer class="footer">
@@ -203,7 +231,6 @@
     </footer>
 
     <script>
-        
         const products = [
             {id: 1, name: "Relaxed Black Oversized T-Shirt", price: "20", image: "images/product1.jpg"},
             {id: 2, name: "Sleek White Long-Sleeve Top", price: "25", image: "images/product2.jpg"},
@@ -216,7 +243,6 @@
             {id: 9, name: "Chic Charcoal Long-Sleeve Crop Top", price: "28", image: "images/product9.jpg"}
         ];
 
-        
         const activePayPalButtons = {};
 
         function renderPayPalButton(price, productName, elementId) {
@@ -298,14 +324,50 @@
             displayProducts(filteredProducts);
         }
 
-        
+        function showSection(sectionId) {
+            
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('search-bar').style.display = 'none';
+            document.getElementById('products').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+            
+            
+            if (sectionId === 'about') {
+                document.getElementById('about').style.display = 'block';
+                window.scrollTo({top: document.getElementById('about').offsetTop, behavior: 'smooth'});
+            } else if (sectionId === 'products') {
+                document.getElementById('search-bar').style.display = 'block';
+                document.getElementById('products').style.display = 'block';
+                displayProducts();
+                window.scrollTo({top: document.getElementById('products').offsetTop, behavior: 'smooth'});
+            } else if (sectionId === 'contact') {
+                document.getElementById('contact').style.display = 'block';
+                window.scrollTo({top: document.getElementById('contact').offsetTop, behavior: 'smooth'});
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             
-            displayProducts();
+            document.getElementById("about-link").addEventListener("click", function() {
+                showSection('about');
+            });
+            
+            document.getElementById("products-link").addEventListener("click", function() {
+                showSection('products');
+            });
+            
+            document.getElementById("contact-link").addEventListener("click", function() {
+                showSection('contact');
+            });
+            
+            document.getElementById("hero-shop-btn").addEventListener("click", function(e) {
+                e.preventDefault();
+                showSection('products');
+            });
             
             
-            document.getElementById("search-input").addEventListener("input", searchProducts);
+            showSection('products');
         });
     </script>
 </body>
-</html>
+</html>\
